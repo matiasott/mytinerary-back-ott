@@ -1,0 +1,25 @@
+{
+  "name": "mytinerary-back-ottjorgematias",
+  "version": "1.0.0",
+  "description": "My aplication of Mytinerary",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+    
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matiasott/mytinerary-back-Ott-Jorge-Matias.git"
+  },
+  "author": "Ott Jorge Matias",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/matiasott/mytinerary-back-Ott-Jorge-Matias/issues"
+  },
+  "homepage": "https://github.com/matiasott/mytinerary-back-Ott-Jorge-Matias#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
