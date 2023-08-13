@@ -4,7 +4,7 @@ const citiesRouter = Router()
 const { getAllCities, getOneCity } = citiesController
 
 citiesRouter.get('/', getAllCities)
-citiesRouter.get('/:name', getOneCity)
+citiesRouter.get('/detailcity/:name', getOneCity)
 // , ()=>{
 //     console.log('Soy la funcion que sigue');
 // }
