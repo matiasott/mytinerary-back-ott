@@ -123,7 +123,33 @@ const citiesController = {
                 error
             });
         }
+    },
+
+    createManyCities: async (req, res, next) => {
+        console.log(req.body);
+        let cities = [];
+        let error = null;
+        let success = true;
+        
+        try {
+            const cityDataArray = req.body.cities;
+            const createPromises = cityDataArray.map(cityData => City.create(cityData));
+            cities = await Promise.all(createPromises);
+    
+            console.log(cities);
+        } catch (err) {
+            console.log(err);
+            success = false;
+            error = err;
+        }
+    
+        res.json({
+            response: cities,
+            success,
+            error
+        });
     }
+    
     
 }
 
