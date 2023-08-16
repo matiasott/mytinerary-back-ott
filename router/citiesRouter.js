@@ -1,12 +1,14 @@
 import { Router } from 'express';
 import citiesController from '../controllers/citiesController.js';
+
 const citiesRouter = Router()
-const { getAllCities, getOneCity } = citiesController
+const { getAllCities, getOneCity, createOneCity,updateOneCity,deleteCity } = citiesController
 
 citiesRouter.get('/', getAllCities)
-citiesRouter.get('/detailcity/:name', getOneCity)
-// , ()=>{
-//     console.log('Soy la funcion que sigue');
-// }
+citiesRouter.post('/', createOneCity)
+citiesRouter.get('/:id', getOneCity)
+citiesRouter.put('/:id', updateOneCity)
+citiesRouter.delete('/:id', deleteCity)
+
 
 export default citiesRouter
