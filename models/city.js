@@ -12,7 +12,8 @@ const citySchema = Schema({
         latitude: { type: Number, required: true },
         longitude: { type: Number, required: true }
     },
-    image: { type: String, required: true }
+    image: { type: String, required: true },
+    itinerary: { type: Schema.Types.ObjectId, ref: 'itinerary', required: true },
 }, {
     timestamps: true
 });

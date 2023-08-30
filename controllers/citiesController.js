@@ -148,8 +148,34 @@ const citiesController = {
             success,
             error
         });
-    }
-    
+    },
+
+    // searchCitiesByName: async (req, res, next) => {
+    //     const { searchQuery } = req.query;
+    //     let cities;
+    //     let error = null;
+    //     let success = true;
+
+    //     try {
+    //         cities = await City.find({ name: { $regex: '^' + searchQuery, $options: 'i' } });
+
+    //         res.json({
+    //             response: cities,
+    //             success,
+    //             error
+    //         });
+    //     } catch (err) {
+    //         console.log(err);
+    //         success = false;
+    //         error = err;
+    //         res.json({
+    //             response: null,
+    //             success,
+    //             error
+    //         });
+    //     }
+    // },
+
     
 }
 
