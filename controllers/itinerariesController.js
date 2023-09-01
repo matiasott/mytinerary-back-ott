@@ -1,4 +1,5 @@
 import Itinerary from "../models/itinerary.js";
+import City from "../models/city.js";
 
 
 const itinerariesController = {
@@ -34,20 +35,23 @@ const itinerariesController = {
         }
     },
 
-    // getItinerariesByCityName: async (req, res, next) => {
-    //     try {
-    //         const cityName = req.params.nameCity;
-    //         const itineraries = await Itinerary.find({ 'cities.name': cityName })
-    //         .populate({
-    //             path: 'cities',
-    //             select: 'name -_id',
-    //         });
-    //         res.json(itineraries);
-    //     } catch (error) {
-    //         res.status(500).json({ error });
-    //     }
-    // },
-    
+    getItinerariesByCityName: async (req, res, next) => {
+        try {
+            const cityName = req.params.nameCity;
+            const city = await City.findOne({ name: cityName });
+
+            if (!city) {
+                return res.status(404).json({ message: 'City ​​not found' });
+            }
+
+            const itineraries = await Itinerary.find({ cities: city._id });
+
+            res.json(itineraries);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    },
+
     createOneItinerary: async (req, res, next) => {
 
         try {
@@ -76,7 +80,6 @@ const itinerariesController = {
             res.status(500).json({ error });
         }
     },
-
 
     deleteOneItinerary: async (req, res, next) => {
         try {

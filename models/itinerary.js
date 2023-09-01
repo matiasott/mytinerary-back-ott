@@ -7,9 +7,9 @@ const itinerarySchema = Schema({
     nameAutor: { type: String, required: true },
     price: { type: Number, required: true },
     tag: { type: String, required: true },
-    cities : [ { type: mongoose.Types.ObjectId, ref: 'city' } ],
-    like:{ type: Number },
-    duration:{ type: Number,required: true },
+    cities: [{ type: mongoose.Types.ObjectId, ref: 'city' }],
+    like: { type: Number },
+    duration: { type: Number, required: true },
 }, {
     timestamps: true
 })

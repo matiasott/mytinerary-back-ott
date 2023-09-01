@@ -4,7 +4,7 @@ import itinerariesController from '../controllers/itinerariesController.js';
 const itinerariesRouter = Router()
 
 itinerariesRouter.get('/', itinerariesController.getAllItineraries)
-// itinerariesRouter.get('/nameCity/:nameCity', itinerariesController.getItinerariesByCityName)
+itinerariesRouter.get('/nameCity/:nameCity', itinerariesController.getItinerariesByCityName)
 itinerariesRouter.get('/:id', itinerariesController.getOneItinerary)
 
 
