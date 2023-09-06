@@ -1,18 +1,17 @@
 import { Router } from 'express';
 import authController from '../controllers/authController.js';
+import { emailExist } from '../middlewares/emailExists.js';
+import passport from '../middlewares/passport.js';
+import validator from '../middlewares/validator.js'
+import { signInSchema } from '../validators/singInValidator.js';
+import { signUpSchema } from '../validators/singUpValidator.js';
 
 
 const authRouter = Router()
-const {singUp} = authController
+const {singUp, singIn,loginWithToken} = authController
 
-// itinerariesRouter.get('/',)
-// itinerariesRouter.get('/nameCity/:nameCity', )
-// itinerariesRouter.get('/:id', )
-
-
-authRouter.post('/', singUp)
-// itinerariesRouter.put( '/:id', )
-// itinerariesRouter.delete( '/:id', )
-
+authRouter.get('/',validator(signInSchema), singIn)
+authRouter.post('/',validator(signUpSchema),emailExist, singUp)
+authRouter.get('/token',passport.authenticate('jwt',{session:false}),loginWithToken)
 
 export default authRouter

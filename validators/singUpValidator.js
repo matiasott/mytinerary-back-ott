@@ -13,17 +13,46 @@ const passwordComplexity = {
 
 export const signUpSchema = joi.object({
 
-  email:joi.string().requered(),
-  password:joiPwd(passwordComplexity).requered(),
-  name:joi.string().min(2).max(30),
-  lastName:joi.string().min(2).max(30),
-  country:joi.string().min(2).max(30),
-  state:joi.string().min(2).max(30),
-  city:joi.string().min(2).max(30),
-  photo:joi.string().uri(),
-  birthDate:joi.date().max(Date.now()),
-  age:joi.number(),
-  phone:joi.string(),
-  verified:joi.boolean()
+  email:joi.string().email().required().messages({
+    'string.empty': 'Email cannot be empty',
+    'any.required': 'Email is required',
+    'string.email': 'Email must be a valid email address (e.g., user@example.com)',
+  }),
+  password:joiPwd(passwordComplexity),
+  name:joi.string().min(2).max(30).messages({
+    'string.min': 'Name must be at least 2 characters long',
+    'string.max': 'Name cannot exceed 30 characters',
+  }),
+  lastName:joi.string().min(2).max(30).messages({
+    'string.min': 'Name must be at least 2 characters long',
+    'string.max': 'Name cannot exceed 30 characters',
+  }),
+  country:joi.string().min(2).max(30).messages({
+    'string.min': 'Name must be at least 2 characters long',
+    'string.max': 'Name cannot exceed 30 characters',
+  }),
+  state:joi.string().min(2).max(30).messages({
+    'string.min': 'Name must be at least 2 characters long',
+    'string.max': 'Name cannot exceed 30 characters',
+  }),
+  city:joi.string().min(2).max(30).messages({
+    'string.min': 'Name must be at least 2 characters long',
+    'string.max': 'Name cannot exceed 30 characters',
+  }),
+  photo:joi.string().uri().messages({
+    'string.uri': 'Photo must be a valid URI',
+  }),
+  birthDate:joi.date().max(Date.now()).messages({
+    'date.max': 'Birthdate cannot be in the future',
+  }),
+  age:joi.number().messages({
+    'number.base': 'Age must be a number',
+  }),
+  phone:joi.string().messages({
+    'string.base': 'Phone number must be a string',
+  }),
+  verified:joi.boolean().messages({
+    'boolean.base': 'Verified must be a boolean value',
+  }),
 
 })
