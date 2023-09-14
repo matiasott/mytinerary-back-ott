@@ -10,8 +10,8 @@ import { signUpSchema } from '../validators/singUpValidator.js';
 const authRouter = Router()
 const {singUp, singIn,loginWithToken} = authController
 
-authRouter.get('/',validator(signInSchema), singIn)
-authRouter.post('/',validator(signUpSchema),emailExist, singUp)
+authRouter.post('/singIn',validator(signInSchema), singIn)
+authRouter.post('/singUp',validator(signUpSchema),emailExist, singUp)
 authRouter.get('/token',passport.authenticate('jwt',{session:false}),loginWithToken)
 
 export default authRouter

@@ -7,7 +7,7 @@ const opt ={
     secretOrKey: process.env.PASS_TOKEN
 }
 
-const fn = async(playload, nex)=>{
+const fn = async(playload, next)=>{
     try{
         const user = await User.findOne({email:playload.email})
         if(!user){
